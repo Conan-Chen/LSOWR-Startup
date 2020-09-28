@@ -1,0 +1,342 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="New_Open_SFDC_8_24" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Salesforce_Homepage" Type="InArgument(x:String)" />
+    <x:Property Name="Job_Code" Type="InArgument(x:String)" />
+    <x:Property Name="Working_Browser" Type="InOutArgument(ui:Browser)" />
+    <x:Property Name="Proposal_Name" Type="InOutArgument(x:String)" />
+    <x:Property Name="Job_Code_RegEx" Type="InArgument(x:Boolean)" />
+    <x:Property Name="Job_CodeLength" Type="InArgument(x:Int32)" />
+    <x:Property Name="Proposal_identifier" Type="InOutArgument(x:String)" />
+    <x:Property Name="Project_identifier" Type="InOutArgument(x:String)" />
+    <x:Property Name="LSOWR_Status" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1451,2586</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>New_Open_SFDC_8_24_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="New_Open_SFDC_8_24" sap:VirtualizedContainerService.HintSize="1168,2381" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1126,385" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+      <TryCatch.Try>
+        <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" Private="{x:Null}" sap2010:Annotation.AnnotationText="Opens new Browser window and opens salesforce&#xA;" BrowserType="Chrome" ContinueOnError="False" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="485,158" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" UiBrowser="[Working_Browser]" Url="[Salesforce_Homepage +&quot;search/ui/UnifiedSearchResults?str=&quot; + Job_Code]">
+          <ui:OpenBrowser.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+            </ActivityAction>
+          </ui:OpenBrowser.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:OpenBrowser>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="489,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+            </ActivityAction.Argument>
+            <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new Exception(&quot;RPA could not open a new Salesforce page. Make sure you are logged into salesforce in a Chrome window.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_4" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Search'" sap:VirtualizedContainerService.HintSize="1126,1864" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="52495fe53af7369e21bfc3ac2513d882" Selector="&lt;html app='chrome.exe' title='Search Results ~ Salesforce - Performance Edition' url='https://sunrun.my.salesforce.com/search/ui/UnifiedSearchResults?str={{Job_Code}}' /&gt;" UiBrowser="[Working_Browser]">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="1092,1718" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Parallel sap:VirtualizedContainerService.HintSize="1050,407" sap2010:WorkflowViewState.IdRef="Parallel_2">
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,361" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                <TryCatch.Try>
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get proposal Identifier" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="GetAttribute_7">
+                    <ui:GetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[Proposal_identifier]</OutArgument>
+                    </ui:GetAttribute.Result>
+                    <ui:GetAttribute.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b96a1814-76cf-40e3-b6f7-a4d1c24ddc4f" InformativeScreenshot="6f7a94749d0c2e72176c5a95c2c2625b" Selector="&lt;html app='chrome.exe' title='Search Results ~ Salesforce - Performance Edition' url='https://sunrun.my.salesforce.com/search/ui/UnifiedSearchResults?str={{Job_Code}}' /&gt;&lt;webctrl parentid='Project__c_body' tag='A' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;a' isleaf='1' tableCol='5' tableRow='2' title='Search Results ~ Salesforce - Performance Edition' /&gt;" TimeoutMS="12000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetAttribute.Target>
+                  </ui:GetAttribute>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get proposal Identifier" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="GetAttribute_8">
+                        <ui:GetAttribute.Result>
+                          <OutArgument x:TypeArguments="x:String">[Proposal_identifier]</OutArgument>
+                        </ui:GetAttribute.Result>
+                        <ui:GetAttribute.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b96a1814-76cf-40e3-b6f7-a4d1c24ddc4f" InformativeScreenshot="6f7a94749d0c2e72176c5a95c2c2625b" Selector="&lt;html app='chrome.exe' title='Search Results ~ Salesforce - Performance Edition' url='https://sunrun.my.salesforce.com/search/ui/UnifiedSearchResults?str={{Job_Code}}' /&gt;&lt;webctrl parentid='Project__c_body' tag='A' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;a' isleaf='1' tableCol='5' tableRow='2' title='Search Results ~ Salesforce - Performance Edition' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:GetAttribute.Target>
+                      </ui:GetAttribute>
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,361" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                <TryCatch.Try>
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get proposal Identifier" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="GetAttribute_9">
+                    <ui:GetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[Project_identifier]</OutArgument>
+                    </ui:GetAttribute.Result>
+                    <ui:GetAttribute.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b96a1814-76cf-40e3-b6f7-a4d1c24ddc4f" InformativeScreenshot="2be45de190ded45e17ae2f4af373e388" Selector="&lt;html app='chrome.exe' title='Search Results ~ Salesforce - Performance Edition' url='https://sunrun.my.salesforce.com/search/ui/UnifiedSearchResults?str={{Job_Code}}' /&gt;&lt;webctrl parentid='Project__c_body' tag='A' colName='Project Name' isleaf='1' parentclass=' dataCell  ' tableCol='2' tableRow='1' /&gt;" TimeoutMS="12000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetAttribute.Target>
+                  </ui:GetAttribute>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Fatal" Message="[&quot;User entered in non-existent job code in salesforce. Workflow is terminated&quot;]" />
+                        <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new Exception(&quot;Job code does not exist on SalesForce, Please try again.&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_8" />
+                      </Sequence>
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+            </Parallel>
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1050,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[Proposal_identifier]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Proposal_identifier.Replace("/a080d00000","").Replace("?srPos=0&amp;srKp=a7Z","")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[Project_identifier]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Project_identifier.Replace("/a7Z0d000000","").Replace("?srPos=0&amp;srKp=a7Z","")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+            </ui:MultipleAssign>
+            <ui:BlockUserInput TimeoutMS="{x:Null}" BlockType="All" DisplayName="Block User Input" sap:VirtualizedContainerService.HintSize="1050,1010" sap2010:WorkflowViewState.IdRef="BlockUserInput_1" KeyModifiers="None" Keys="esc" SpecialKey="True">
+              <ui:BlockUserInput.Body>
+                <Sequence sap:VirtualizedContainerService.HintSize="480,884" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch DisplayName="Get Proposal" sap:VirtualizedContainerService.HintSize="438,355" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                    <TryCatch.Try>
+                      <ui:GetValue ContinueOnError="False" DisplayName="Get Proposal_Name" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                        <ui:GetValue.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f82ba5f3-1ec5-4652-abc1-7c97a30c92bf" InformativeScreenshot="add122afe7f512dfc8c5962d4f49c1c9" Selector="&lt;html app='chrome.exe' title='Search Results ~ Salesforce - Performance Edition' url='https://sunrun.my.salesforce.com/search/ui/UnifiedSearchResults?str={{Job_Code}}' /&gt;&lt;webctrl parentid='Project__c_body' tag='A' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;a' isleaf='1' tableCol='5' tableRow='2' title='Search Results ~ Salesforce - Performance Edition' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                        </ui:GetValue.Target>
+                        <ui:GetValue.Value>
+                          <OutArgument x:TypeArguments="x:String">[Proposal_Name]</OutArgument>
+                        </ui:GetValue.Value>
+                      </ui:GetValue>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                        </ActivityAction>
+                      </Catch>
+                      <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                          </ActivityAction.Argument>
+                          <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new Exception(&quot;Job code could n&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_6" />
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                  <TryCatch DisplayName="Click Project Link" sap:VirtualizedContainerService.HintSize="438,397" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                    <TryCatch.Try>
+                      <ui:Click AlterIfDisabled="{x:Null}" CursorPosition="{x:Null}" sap2010:Annotation.AnnotationText="Sends Ctrl+Click on Project Hyperlink&#xA;" ClickType="CLICK_SINGLE" ContinueOnError="False" DelayBefore="200" DelayMS="200" DisplayName="Open Project Page in New Tab" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="367ddb6b-75b7-4075-add7-a2286ce8f577" InformativeScreenshot="2c57c31375fa918ca968b7697658eec8" Selector="&lt;html app='chrome.exe' title='Search Results ~ Salesforce - Performance Edition' url='https://sunrun.my.salesforce.com/search/ui/UnifiedSearchResults?str={{Job_Code}}' /&gt;&lt;webctrl parentid='Project__c_body' tag='A' colName='Project Name' isleaf='1' parentclass=' dataCell  ' tableCol='2' tableRow='1' /&gt;" TimeoutMS="10000" WaitForReady="NONE" />
+                        </ui:Click.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:Click>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Fatal" Message="[&quot;User entered in non-existent job code in salesforce. Workflow is terminated&quot;]" />
+                            <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new Exception(&quot;Job code does not exist on SalesForce, Please try again.&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_3" />
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                </Sequence>
+              </ui:BlockUserInput.Body>
+            </ui:BlockUserInput>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>

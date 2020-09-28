@@ -1,0 +1,215 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="OpenProjectLSOWRTask" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="LSOWR_Status" Type="OutArgument(x:String)" />
+    <x:Property Name="Project_identifier" Type="InArgument(x:String)" />
+    <x:Property Name="LSOWR_identifier" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1451,1518</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>DocumentFormat.OpenXml</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Open Project LSOWR Task" sap:VirtualizedContainerService.HintSize="516,1313" sap2010:WorkflowViewState.IdRef="Sequence_819">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BlockUserInput TimeoutMS="{x:Null}" BlockType="All" DisplayName="Block User Input" sap:VirtualizedContainerService.HintSize="474,525" sap2010:WorkflowViewState.IdRef="BlockUserInput_2" KeyModifiers="None" Keys="esc" SpecialKey="True">
+      <ui:BlockUserInput.Body>
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,398" sap2010:WorkflowViewState.IdRef="TryCatch_122">
+          <TryCatch.Try>
+            <ui:Click AlterIfDisabled="{x:Null}" CursorPosition="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Sends Ctrl+Click on LSOWR task Hyperlink using partial selector for proposal element ID&#xA;" ClickType="CLICK_DOUBLE" DelayBefore="0" DelayMS="0" DisplayName="Open  " sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="Click_251" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="367ddb6b-75b7-4075-add7-a2286ce8f577" InformativeScreenshot="bf21501880f722110b11ab7efe4db189" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' url='*{{Project_identifier}}*' /&gt;&lt;webctrl aaname='Layout + SOW Review' id='*' tag='SPAN' rowName='Layout + SOW Review                                                                 ' /&gt;" WaitForReady="INTERACTIVE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:Click>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_126">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                </ActivityAction.Argument>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+      </ui:BlockUserInput.Body>
+    </ui:BlockUserInput>
+    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get identifier of LSOWR task" sap:VirtualizedContainerService.HintSize="474,134" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
+      <ui:GetAttribute.Result>
+        <OutArgument x:TypeArguments="x:String">[LSOWR_identifier]</OutArgument>
+      </ui:GetAttribute.Result>
+      <ui:GetAttribute.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6e8f9b51-e358-44a2-9f8e-fc13e42f904e" InformativeScreenshot="83e7dd8f9aaad2f4b98e4f355e4d8e00" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' url='*{{Project_identifier}}*' /&gt;&lt;webctrl aaname='Layout + SOW Review' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;form&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;a' href='*' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetAttribute.Target>
+    </ui:GetAttribute>
+    <Assign sap:VirtualizedContainerService.HintSize="474,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[LSOWR_identifier]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[LSOWR_identifier.Replace("https://sunrun.my.salesforce.com/a7e0d000007","")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="474,382" sap2010:WorkflowViewState.IdRef="TryCatch_121">
+      <TryCatch.Try>
+        <ui:GetFullText IgnoreHidden="{x:Null}" sap2010:Annotation.AnnotationText="Pulls information from NSM field&#xA;" ContinueOnError="False" DisplayName="LSOWR Task status" sap:VirtualizedContainerService.HintSize="334,150" sap2010:WorkflowViewState.IdRef="GetFullText_14">
+          <ui:GetFullText.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="347175d6-4da6-4c1f-b78c-883a2c228bb4" InformativeScreenshot="e5a2fadf602fecf56d45845fb71cfc01" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' idx='*' url='*{{LSOWR_identifier}}*' /&gt;&lt;webctrl parentid='j_id0:j_id12:j_id13:j_id15:taskHeaderPanel' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tag='TD' class='slds-cell-wrap slds-p-around--none' isleaf='1' rowName='                                                     Status:                                                 ' tableRow='1' /&gt;" WaitForReady="COMPLETE">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+            </ui:Target>
+          </ui:GetFullText.Target>
+          <ui:GetFullText.Text>
+            <OutArgument x:TypeArguments="x:String">[LSOWR_Status]</OutArgument>
+          </ui:GetFullText.Text>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:GetFullText>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_125">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="418,619" sap2010:WorkflowViewState.IdRef="RetryScope_20" NumberOfRetries="3" RetryInterval="1.00:00:00">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,445" sap2010:WorkflowViewState.IdRef="Sequence_820">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Click AlterIfDisabled="{x:Null}" CursorPosition="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Sends Ctrl+Click on LSOWR task Hyperlink using partial selector for proposal element ID&#xA;" ClickType="CLICK_DOUBLE" DelayBefore="0" DelayMS="0" DisplayName="Open  " sap:VirtualizedContainerService.HintSize="334,163" sap2010:WorkflowViewState.IdRef="Click_250" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="367ddb6b-75b7-4075-add7-a2286ce8f577" InformativeScreenshot="bf21501880f722110b11ab7efe4db189" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' url='*{{Project_identifier}}*' /&gt;&lt;webctrl aaname='Layout + SOW Review' id='*' tag='SPAN' rowName='Layout + SOW Review                                                                 ' /&gt;" WaitForReady="INTERACTIVE">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                        </ui:Target>
+                      </ui:Click.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:Click>
+                    <ui:GetFullText IgnoreHidden="{x:Null}" sap2010:Annotation.AnnotationText="Pulls information from NSM field&#xA;" ContinueOnError="False" DisplayName="LSOWR Task status" sap:VirtualizedContainerService.HintSize="334,150" sap2010:WorkflowViewState.IdRef="GetFullText_15">
+                      <ui:GetFullText.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="347175d6-4da6-4c1f-b78c-883a2c228bb4" InformativeScreenshot="e5a2fadf602fecf56d45845fb71cfc01" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' idx='*' url='*{{LSOWR_identifier}}*' /&gt;&lt;webctrl parentid='j_id0:j_id12:j_id13:j_id15:taskHeaderPanel' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tag='TD' class='slds-cell-wrap slds-p-around--none' isleaf='1' rowName='                                                     Status:                                                 ' tableRow='1' /&gt;" WaitForReady="COMPLETE">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                        </ui:Target>
+                      </ui:GetFullText.Target>
+                      <ui:GetFullText.Text>
+                        <OutArgument x:TypeArguments="x:String">[LSOWR_Status]</OutArgument>
+                      </ui:GetFullText.Text>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:GetFullText>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

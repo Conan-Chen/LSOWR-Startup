@@ -1,0 +1,343 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AssignTaskwithAssets" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Customer_FullName" Type="InOutArgument(x:String)" />
+    <x:Property Name="Branch_Code" Type="InOutArgument(x:String)" />
+    <x:Property Name="Job_Code" Type="InArgument(x:String)" />
+    <x:Property Name="Customer_FirstName" Type="OutArgument(x:String)" />
+    <x:Property Name="Customer_LastName" Type="OutArgument(x:String)" />
+    <x:Property Name="CAD_Drive_Path" Type="OutArgument(x:String)" />
+    <x:Property Name="NYCjob" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="CAD_FileName" Type="OutArgument(x:String)" />
+    <x:Property Name="CAD_FileID" Type="OutArgument(x:String)" />
+    <x:Property Name="NYCTemplate_ID" Type="OutArgument(x:String)" />
+    <x:Property Name="NYCTemplate_Name" Type="OutArgument(x:String)" />
+    <x:Property Name="LSOWR_identifier" Type="InArgument(x:String)" />
+    <x:Property Name="Project_identifier" Type="InArgument(x:String)" />
+    <x:Property Name="argument1" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1505,2921</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>DocumentFormat.OpenXml</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Assign_Task with Assets" sap:VirtualizedContainerService.HintSize="1515,2716" sap2010:WorkflowViewState.IdRef="Sequence_783">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="Unassigned" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Assign to Me" sap:VirtualizedContainerService.HintSize="1473,1231" sap2010:WorkflowViewState.IdRef="Sequence_889">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:UiElementExists DisplayName="Check for Assign to Me" Exists="[Unassigned]" sap:VirtualizedContainerService.HintSize="661,106" sap2010:WorkflowViewState.IdRef="UiElementExists_135">
+        <ui:UiElementExists.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="742e2b5f-ba9e-46cf-9a5c-a1cd6ca32cef" InformativeScreenshot="b813bfc90c7a31e17c1d1d89450b842f" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' url='*{{LSOWR_identifier}}*' /&gt;&lt;webctrl id='j_id0:j_id252:j_id253:j_id255:assignMeLinkId' tag='INPUT' /&gt;" TimeoutMS="1500" WaitForReady="NONE" />
+        </ui:UiElementExists.Target>
+      </ui:UiElementExists>
+      <ui:BlockUserInput TimeoutMS="{x:Null}" BlockType="All" DisplayName="Block User Input" sap:VirtualizedContainerService.HintSize="661,993" sap2010:WorkflowViewState.IdRef="BlockUserInput_26" KeyModifiers="None" Keys="esc" SpecialKey="True">
+        <ui:BlockUserInput.Body>
+          <If Condition="[Unassigned = True]" sap:VirtualizedContainerService.HintSize="625,866" sap2010:WorkflowViewState.IdRef="If_103">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="480,717" sap2010:WorkflowViewState.IdRef="Sequence_888">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,625" sap2010:WorkflowViewState.IdRef="TryCatch_145">
+                  <TryCatch.Try>
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,393" sap2010:WorkflowViewState.IdRef="Sequence_886">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="500" DisplayName="Select Assign To Me" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_269" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="True">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9641ce58-24eb-4731-b95f-bdb8e258e920" InformativeScreenshot="6c445ff740590209c3aa76cd68cb118f" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' url='*{{LSOWR_identifier}}*' /&gt;&lt;webctrl id='j_id0:j_id252:j_id253:j_id255:assignMeLinkId' tag='INPUT' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+                        </ui:Click.Target>
+                      </ui:Click>
+                      <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ContinueOnError="True" DelayBetweenKeys="0" DisplayName="Send Enter" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="SendHotkey_194" Key="enter" KeyModifiers="None" SpecialKey="True">
+                        <ui:SendHotkey.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cf356124-8d99-4241-84fa-af885b1716b8" InformativeScreenshot="7a67e7d84afcb4608f43ee2a3d149752" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' url='*{{LSOWR_identifier}}*' /&gt;&lt;webctrl id='j_id0:j_id252:j_id253:j_id255:assignMeLinkId' tag='INPUT' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+                        </ui:SendHotkey.Target>
+                      </ui:SendHotkey>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_155">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                        </ActivityAction.Argument>
+                        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="418,568" sap2010:WorkflowViewState.IdRef="RetryScope_31" NumberOfRetries="3" RetryInterval="00:00:03">
+                          <ui:RetryScope.ActivityBody>
+                            <ActivityAction>
+                              <Sequence sap:VirtualizedContainerService.HintSize="376,393" sap2010:WorkflowViewState.IdRef="Sequence_887">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="500" DisplayName="Select Assign To Me" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_270" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="True">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9641ce58-24eb-4731-b95f-bdb8e258e920" InformativeScreenshot="6c445ff740590209c3aa76cd68cb118f" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' idx='*' /&gt;&lt;webctrl id='j_id0:j_id252:j_id253:j_id255:assignMeLinkId' tag='INPUT' aaname='Assign To Me' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;form&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' tableCol='1' tableRow='1' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ContinueOnError="True" DelayBetweenKeys="0" DisplayName="Send Enter" sap:VirtualizedContainerService.HintSize="334,155" sap2010:WorkflowViewState.IdRef="SendHotkey_195" Key="enter" KeyModifiers="None" SpecialKey="True">
+                                  <ui:SendHotkey.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cf356124-8d99-4241-84fa-af885b1716b8" InformativeScreenshot="7a67e7d84afcb4608f43ee2a3d149752" Selector="&lt;html app='chrome.exe' title='Salesforce - Performance Edition' idx='*' /&gt;&lt;webctrl id='j_id0:j_id252:j_id253:j_id255:assignMeLinkId' tag='INPUT' aaname='Assign To Me' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;form&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' tableCol='1' tableRow='1' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+                                  </ui:SendHotkey.Target>
+                                </ui:SendHotkey>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:RetryScope.ActivityBody>
+                          <ui:RetryScope.Condition>
+                            <ActivityFunc x:TypeArguments="x:Boolean" />
+                          </ui:RetryScope.Condition>
+                        </ui:RetryScope>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+              </Sequence>
+            </If.Then>
+          </If>
+        </ui:BlockUserInput.Body>
+      </ui:BlockUserInput>
+    </Sequence>
+    <Sequence sap:VirtualizedContainerService.HintSize="1473,1353" sap2010:WorkflowViewState.IdRef="Sequence_782">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1431,292" sap2010:WorkflowViewState.IdRef="TryCatch_154">
+        <TryCatch.Try>
+          <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CAD_Drive_Path" DisplayName="Get CAD Drive Path" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GetRobotAsset_51">
+            <ui:GetRobotAsset.Value>
+              <OutArgument x:TypeArguments="x:String">[CAD_Drive_Path]</OutArgument>
+            </ui:GetRobotAsset.Value>
+          </ui:GetRobotAsset>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_164">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </ActivityAction.Argument>
+              <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new Exception(&quot;UiPath encountered an error trying to fetch information from Uipath Orchestrator, Please re-try again.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_37" />
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+      <Assign sap:VirtualizedContainerService.HintSize="1431,60" sap2010:WorkflowViewState.IdRef="Assign_390">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[Branch_Code]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Job_Code.Substring(0,3)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1431,829" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="1395,751" sap2010:WorkflowViewState.IdRef="Sequence_891">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[Branch_Code = &quot;201&quot; OR Branch_Code = &quot;211&quot; OR Branch_Code = &quot;212&quot;  OR Branch_Code = &quot;213&quot;  OR Branch_Code = &quot;216&quot;]" sap:VirtualizedContainerService.HintSize="1353,659" sap2010:WorkflowViewState.IdRef="If_97">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="654,510" sap2010:WorkflowViewState.IdRef="Sequence_781">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="612,60" sap2010:WorkflowViewState.IdRef="Assign_391">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[NYCjob]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="612,318" sap2010:WorkflowViewState.IdRef="TryCatch_134">
+                    <TryCatch.Try>
+                      <Parallel sap:VirtualizedContainerService.HintSize="574,86" sap2010:WorkflowViewState.IdRef="Parallel_192">
+                        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="NYCTemplate_ID" DisplayName="Get NYC Template Name" sap:VirtualizedContainerService.HintSize="200,40" sap2010:WorkflowViewState.IdRef="GetRobotAsset_30">
+                          <ui:GetRobotAsset.Value>
+                            <OutArgument x:TypeArguments="x:String">[NYCTemplate_ID]</OutArgument>
+                          </ui:GetRobotAsset.Value>
+                        </ui:GetRobotAsset>
+                        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Salesforce_Homepage" DisplayName="Get NYC Template ID" sap:VirtualizedContainerService.HintSize="200,40" sap2010:WorkflowViewState.IdRef="GetRobotAsset_31">
+                          <ui:GetRobotAsset.Value>
+                            <OutArgument x:TypeArguments="x:String">[NYCTemplate_Name]</OutArgument>
+                          </ui:GetRobotAsset.Value>
+                        </ui:GetRobotAsset>
+                      </Parallel>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="578,22" sap2010:WorkflowViewState.IdRef="Catch`1_142">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new Exception(&quot;RPA encountered an error while trying to download CAD file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_25" />
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="654,510" sap2010:WorkflowViewState.IdRef="Sequence_890">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="612,60" sap2010:WorkflowViewState.IdRef="Assign_392">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[NYCjob]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="612,318" sap2010:WorkflowViewState.IdRef="TryCatch_155">
+                    <TryCatch.Try>
+                      <Parallel sap:VirtualizedContainerService.HintSize="574,86" sap2010:WorkflowViewState.IdRef="Parallel_194">
+                        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CAD_FileName" DisplayName="Get CAD File Name" sap:VirtualizedContainerService.HintSize="200,40" sap2010:WorkflowViewState.IdRef="GetRobotAsset_52">
+                          <ui:GetRobotAsset.Value>
+                            <OutArgument x:TypeArguments="x:String">[CAD_FileName]</OutArgument>
+                          </ui:GetRobotAsset.Value>
+                        </ui:GetRobotAsset>
+                        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CAD_FileID" DisplayName="Get CAD File ID" sap:VirtualizedContainerService.HintSize="200,40" sap2010:WorkflowViewState.IdRef="GetRobotAsset_53">
+                          <ui:GetRobotAsset.Value>
+                            <OutArgument x:TypeArguments="x:String">[CAD_FileID]</OutArgument>
+                          </ui:GetRobotAsset.Value>
+                        </ui:GetRobotAsset>
+                      </Parallel>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="578,22" sap2010:WorkflowViewState.IdRef="Catch`1_165">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new Exception(&quot;RPA encountered an error while trying to download CAD file. Please try again.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_38" />
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+    </Sequence>
+  </Sequence>
+</Activity>
